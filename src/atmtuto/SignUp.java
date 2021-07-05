@@ -384,8 +384,9 @@ public class SignUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Missing Informatiom");
         }else{
             try{
-                Con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","root");
-                PreparedStatement Add = Con.prepareStatement("insert into AccountTbl values(?,?,?,?,?,?,?,?,?)");
+                Class.forName("com.mysql.jdbc.Driver"); 
+                Con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
+                PreparedStatement Add = Con.prepareStatement("insert into AccountTbl values(?,?,?,?,?,?,?,?,?,?)");
                 Add.setInt(1,Integer.valueOf(ACCNUMTb.getText()));
                 Add.setString(2, AccNameTb.getText());
                 Add.setString(3, FaNameTb.getText());
@@ -400,7 +401,7 @@ public class SignUp extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Account Saved");
                 Con.close();
             }catch(Exception e){
-                System.out.println(e);
+                JOptionPane.showMessageDialog(this, e);
             }
         }   
     }//GEN-LAST:event_SubmitBtnMouseClicked
