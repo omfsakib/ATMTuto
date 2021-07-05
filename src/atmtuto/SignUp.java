@@ -6,7 +6,7 @@
 package atmtuto;
 
 import java.sql.*;
-import com.sun.jdi.connect.spi.Connection;
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 
 /**
@@ -384,7 +384,7 @@ public class SignUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Missing Informatiom");
         }else{
             try{
-                Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","root");
+                Con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","root");
                 PreparedStatement Add = Con.prepareStatement("insert into AccountTbl values(?,?,?,?,?,?,?,?,?)");
                 Add.setInt(1,Integer.valueOf(ACCNUMTb.getText()));
                 Add.setString(2, AccNameTb.getText());
