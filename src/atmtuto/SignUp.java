@@ -377,7 +377,17 @@ public class SignUp extends javax.swing.JFrame {
         PreparedStatement pst = null;
         ResultSet Rs = null;
         Statement St = null;
-        
+        private void Clear()
+        {
+            ACCNUMTb.setText("");
+            AccNameTb.setText("");
+            FaNameTb.setText("");
+            PhoneTb.setText("");
+            AddressTb.setText("");
+            EducCb.setSelectedIndex(-1);
+            OccupationTb.setText("");
+            PINTb.setText("");
+        }
     private void SubmitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitBtnMouseClicked
         if(ACCNUMTb.getText().isEmpty() || AccNameTb.getText().isEmpty() || FaNameTb.getText().isEmpty() || PhoneTb.getText().isEmpty() || AddressTb.getText().isEmpty() || OccupationTb.getText().isEmpty() || PINTb.getText().isEmpty())
         {
@@ -400,6 +410,7 @@ public class SignUp extends javax.swing.JFrame {
                 int row = Add.executeUpdate();
                 JOptionPane.showMessageDialog(this,"Account Saved");
                 Con.close();
+                Clear();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(this, e);
             }
