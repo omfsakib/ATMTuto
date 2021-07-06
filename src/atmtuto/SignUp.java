@@ -395,7 +395,7 @@ public class SignUp extends javax.swing.JFrame {
         }else{
             try{
                 Class.forName("com.mysql.jdbc.Driver"); 
-                Con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
+                Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
                 PreparedStatement Add = Con.prepareStatement("insert into AccountTbl values(?,?,?,?,?,?,?,?,?,?)");
                 Add.setInt(1,Integer.valueOf(ACCNUMTb.getText()));
                 Add.setString(2, AccNameTb.getText());
