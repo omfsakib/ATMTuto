@@ -5,6 +5,8 @@
  */
 package atmtuto;
 
+import static atmtuto.Deposits.MyAccNum;
+
 /**
  *
  * @author SaKiB
@@ -105,6 +107,11 @@ public class MainMenu extends javax.swing.JFrame {
         DEPOSITBTN1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         DEPOSITBTN1.setForeground(new java.awt.Color(102, 0, 255));
         DEPOSITBTN1.setText("DEPOSIT");
+        DEPOSITBTN1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DEPOSITBTN1MouseClicked(evt);
+            }
+        });
 
         DEPOSITBTN2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         DEPOSITBTN2.setForeground(new java.awt.Color(102, 0, 255));
@@ -256,6 +263,11 @@ public class MainMenu extends javax.swing.JFrame {
     private void DEPOSITBTN4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DEPOSITBTN4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DEPOSITBTN4ActionPerformed
+
+    private void DEPOSITBTN1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DEPOSITBTN1MouseClicked
+        new Deposits(MyAccNum).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_DEPOSITBTN1MouseClicked
 
     /**
      * @param args the command line arguments
