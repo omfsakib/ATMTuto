@@ -212,14 +212,14 @@ public class LOGIN extends javax.swing.JFrame {
       if(UnameTb.getText().isEmpty() || PasswordTb.getText().isEmpty()){
           JOptionPane.showMessageDialog(this, "Enter Account and PIN Number");
       }else{
-            String Query = "select * from Accounttbl where AccName='"+UnameTb.getText()+"' and PIN="+PasswordTb.getText()+"";
+            String Query = "select * from Accounttbl where AccNum='"+UnameTb.getText()+"' and PIN="+PasswordTb.getText()+"";
             try{
                 Class.forName("com.mysql.jdbc.Driver"); 
                 Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
                 St = Con.createStatement();
                 Rs = St.executeQuery(Query);
                 if(Rs.next()){
-                    new MainMenu().setVisible(true);
+                    new MainMenu(Rs.getInt(1)).setVisible(true);
                     this.dispose();
                 }else{
                     JOptionPane.showMessageDialog(this, "Wrong Account Number Or PIN");
