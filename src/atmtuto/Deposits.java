@@ -21,7 +21,7 @@ public class Deposits extends javax.swing.JFrame {
         initComponents();
     }
     int MyAccNum;
-    public Deposits(int AccNum) {
+     public Deposits(int AccNum) {
         initComponents();
         MyAccNum = AccNum;
         GetBalance();
@@ -31,21 +31,23 @@ public class Deposits extends javax.swing.JFrame {
         ResultSet Rs = null,Rs1=null;
         Statement St = null,St1=null;
         int OldBalance;
-    private void GetBalance(){
+   private void GetBalance()
+   {
         String Query = "select * from Accounttbl where AccNum='"+MyAccNum+"'";
-            try{
-                Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
-                St1 = Con.createStatement();
-                Rs1 = St1.executeQuery(Query);
-                if(Rs1.next()){
-                   OldBalance = Rs1.getInt(9);
-                }else{
-                    
-                }
-            }catch (Exception e){
-                JOptionPane.showMessageDialog(this, e);
+        try {
+              Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
+              St1 = Con.createStatement();
+              Rs1 = St1.executeQuery(Query);
+              if(Rs1.next()){
+              OldBalance = Rs1.getInt(9);             
+              }else
+              {
+                
+              }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
         }
-    }
+   }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -224,25 +226,29 @@ public class Deposits extends javax.swing.JFrame {
     }//GEN-LAST:event_DEPOSITBTN5ActionPerformed
 
     private void DEPOSITBTN5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DEPOSITBTN5MouseClicked
-        if(AmountTb.getText().isEmpty() || AmountTb.getText().equals(0)){
-            JOptionPane.showMessageDialog(this, "Enter Valid Amount");
-        }else{
-            try{
-                String Query = "Update Accounttbl set Balance=? where AccNum=?"; 
-                Class.forName("com.mysql.jdbc.Driver"); 
-                Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
-                PreparedStatement ps = Con.prepareStatement(Query);
-                ps.setInt(1, MyAccNum);
-                ps.setInt(9, OldBalance+Integer.valueOf(AmountTb.getText()));
-                if(ps.executeUpdate() == 1){
-                    JOptionPane.showMessageDialog(this, "Balance Updated");
-                }else{
-                    JOptionPane.showMessageDialog(this, "Missing Information");
-                }
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-            }
-        }
+        if(AmountTb.getText().isEmpty() || AmountTb.getText().equals(0))
+             {
+                 JOptionPane.showMessageDialog(this, "Enter Valid Amount");
+             }else
+             {
+                 try {
+                 String Query = "Update AccountTbl set Balance=? where AccNum=?";
+                 Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root",""); 
+                 PreparedStatement ps = Con.prepareStatement(Query);
+                 ps.setInt(1, OldBalance+Integer.valueOf(AmountTb.getText()));
+                 ps.setInt(2, MyAccNum);
+                 if(ps.executeUpdate() == 1)
+                 {
+                     JOptionPane.showMessageDialog(this, "Balance Updated");
+                 }else
+                 {
+                     JOptionPane.showMessageDialog(this, "Missing Information");
+                 }
+                 } catch (Exception e) {
+                     JOptionPane.showMessageDialog(this, e);
+                 }
+
+             }
     }//GEN-LAST:event_DEPOSITBTN5MouseClicked
 
     /**
