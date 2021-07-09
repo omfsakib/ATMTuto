@@ -5,8 +5,6 @@
  */
 package atmtuto;
 
-import static atmtuto.Deposits.MyAccNum;
-
 /**
  *
  * @author SaKiB

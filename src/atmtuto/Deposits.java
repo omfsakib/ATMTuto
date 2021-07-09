@@ -20,7 +20,7 @@ public class Deposits extends javax.swing.JFrame {
     public Deposits() {
         initComponents();
     }
-    static int MyAccNum;
+    int MyAccNum;
     public Deposits(int AccNum) {
         initComponents();
         MyAccNum = AccNum;
@@ -32,14 +32,13 @@ public class Deposits extends javax.swing.JFrame {
         Statement St = null,St1=null;
         int OldBalance;
     private void GetBalance(){
-        String Query = "select * from Accounttbl where AccName='"+MyAccNum+"'";
+        String Query = "select * from Accounttbl where AccNum='"+MyAccNum+"'";
             try{
-                Class.forName("com.mysql.jdbc.Driver"); 
                 Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
                 St1 = Con.createStatement();
                 Rs1 = St1.executeQuery(Query);
                 if(Rs1.next()){
-                   OldBalance = Rs1.getInt(10);
+                   OldBalance = Rs1.getInt(9);
                 }else{
                     
                 }
@@ -229,12 +228,12 @@ public class Deposits extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Enter Valid Amount");
         }else{
             try{
-                String Query = "Update AccountTbl set Balance=? where AccNum=?"; 
+                String Query = "Update Accounttbl set Balance=? where AccNum=?"; 
                 Class.forName("com.mysql.jdbc.Driver"); 
                 Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
                 PreparedStatement ps = Con.prepareStatement(Query);
-                ps.setInt(1, OldBalance+Integer.valueOf(AmountTb.getText()));
-                ps.setInt(2, MyAccNum);
+                ps.setInt(1, MyAccNum);
+                ps.setInt(9, OldBalance+Integer.valueOf(AmountTb.getText()));
                 if(ps.executeUpdate() == 1){
                     JOptionPane.showMessageDialog(this, "Balance Updated");
                 }else{
