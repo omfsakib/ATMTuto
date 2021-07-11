@@ -42,7 +42,7 @@ public class MainMenu extends javax.swing.JFrame {
         DEPOSITBTN1 = new javax.swing.JButton();
         DEPOSITBTN2 = new javax.swing.JButton();
         DEPOSITBTN3 = new javax.swing.JButton();
-        DEPOSITBTN4 = new javax.swing.JButton();
+        ChangePinBtn = new javax.swing.JButton();
         DEPOSITBTN5 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -135,12 +135,17 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        DEPOSITBTN4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        DEPOSITBTN4.setForeground(new java.awt.Color(102, 0, 255));
-        DEPOSITBTN4.setText("CHANGE PIN");
-        DEPOSITBTN4.addActionListener(new java.awt.event.ActionListener() {
+        ChangePinBtn.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        ChangePinBtn.setForeground(new java.awt.Color(102, 0, 255));
+        ChangePinBtn.setText("CHANGE PIN");
+        ChangePinBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ChangePinBtnMouseClicked(evt);
+            }
+        });
+        ChangePinBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DEPOSITBTN4ActionPerformed(evt);
+                ChangePinBtnActionPerformed(evt);
             }
         });
 
@@ -174,7 +179,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(DEPOSITBTN2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DEPOSITBTN4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ChangePinBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -226,7 +231,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DEPOSITBTN5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DEPOSITBTN4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ChangePinBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
@@ -272,14 +277,19 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DEPOSITBTN5ActionPerformed
 
-    private void DEPOSITBTN4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DEPOSITBTN4ActionPerformed
+    private void ChangePinBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePinBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DEPOSITBTN4ActionPerformed
+    }//GEN-LAST:event_ChangePinBtnActionPerformed
 
     private void DEPOSITBTN1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DEPOSITBTN1MouseClicked
         new Deposits(MyAccNum).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_DEPOSITBTN1MouseClicked
+
+    private void ChangePinBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ChangePinBtnMouseClicked
+        new ChangePIN(MyAccNum).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ChangePinBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -318,11 +328,11 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AccNum1b1;
+    private javax.swing.JButton ChangePinBtn;
     private javax.swing.JButton DEPOSITBTN;
     private javax.swing.JButton DEPOSITBTN1;
     private javax.swing.JButton DEPOSITBTN2;
     private javax.swing.JButton DEPOSITBTN3;
-    private javax.swing.JButton DEPOSITBTN4;
     private javax.swing.JButton DEPOSITBTN5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
