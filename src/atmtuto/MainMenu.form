@@ -216,6 +216,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="X"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel7MouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -270,6 +273,7 @@
             <Property name="text" type="java.lang.String" value="FASTCASH"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DEPOSITBTN2MouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DEPOSITBTN2ActionPerformed"/>
           </Events>
         </Component>

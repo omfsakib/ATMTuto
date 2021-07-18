@@ -66,6 +66,11 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Calisto MT", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("X");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -125,6 +130,11 @@ public class MainMenu extends javax.swing.JFrame {
         DEPOSITBTN2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         DEPOSITBTN2.setForeground(new java.awt.Color(102, 0, 255));
         DEPOSITBTN2.setText("FASTCASH");
+        DEPOSITBTN2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DEPOSITBTN2MouseClicked(evt);
+            }
+        });
         DEPOSITBTN2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DEPOSITBTN2ActionPerformed(evt);
@@ -300,6 +310,15 @@ public class MainMenu extends javax.swing.JFrame {
         new Withdraws(MyAccNum).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_WithdrawBtnMouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+       System.exit(1);
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void DEPOSITBTN2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DEPOSITBTN2MouseClicked
+        new FastCashs(MyAccNum).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_DEPOSITBTN2MouseClicked
 
     /**
      * @param args the command line arguments

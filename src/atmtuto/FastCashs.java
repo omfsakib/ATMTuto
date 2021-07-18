@@ -5,6 +5,13 @@
  */
 package atmtuto;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SaKiB
@@ -17,6 +24,37 @@ public class FastCashs extends javax.swing.JFrame {
     public FastCashs() {
         initComponents();
     }
+    int MyAccNum;
+     public FastCashs(int AccNum) {
+        initComponents();
+        MyAccNum = AccNum;
+        GetBalance();
+    }
+        Connection Con = null;
+        PreparedStatement pst = null,pst1=null;
+        ResultSet Rs = null,Rs1=null;
+        Statement St = null,St1=null;
+        int OldBalance;
+   private void GetBalance()
+   {
+        String Query = "select * from Accounttbl where AccNum='"+MyAccNum+"'";
+        try {
+            
+        Class.forName("com.mysql.jdbc.Driver"); 
+              Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
+            St1 = Con.createStatement();
+              Rs1 = St1.executeQuery(Query);
+              if(Rs1.next()){
+              OldBalance = Rs1.getInt(9); 
+              BalLbl.setText("Rs"+OldBalance);
+              }else
+              {
+                
+              }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +79,7 @@ public class FastCashs extends javax.swing.JFrame {
         DEPOSITBTN5 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        BalLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +143,11 @@ public class FastCashs extends javax.swing.JFrame {
         DEPOSITBTN1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         DEPOSITBTN1.setForeground(new java.awt.Color(102, 0, 255));
         DEPOSITBTN1.setText("Rs 100");
+        DEPOSITBTN1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DEPOSITBTN1MouseClicked(evt);
+            }
+        });
 
         DEPOSITBTN2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         DEPOSITBTN2.setForeground(new java.awt.Color(102, 0, 255));
@@ -127,6 +170,11 @@ public class FastCashs extends javax.swing.JFrame {
         DEPOSITBTN4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         DEPOSITBTN4.setForeground(new java.awt.Color(102, 0, 255));
         DEPOSITBTN4.setText("Rs 5000");
+        DEPOSITBTN4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DEPOSITBTN4MouseClicked(evt);
+            }
+        });
         DEPOSITBTN4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DEPOSITBTN4ActionPerformed(evt);
@@ -136,6 +184,11 @@ public class FastCashs extends javax.swing.JFrame {
         DEPOSITBTN5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         DEPOSITBTN5.setForeground(new java.awt.Color(102, 0, 255));
         DEPOSITBTN5.setText("Rs 10000");
+        DEPOSITBTN5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DEPOSITBTN5MouseClicked(evt);
+            }
+        });
         DEPOSITBTN5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DEPOSITBTN5ActionPerformed(evt);
@@ -150,9 +203,9 @@ public class FastCashs extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setText("LOGOUT");
 
-        jLabel8.setFont(new java.awt.Font("Calisto MT", 1, 22)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 0, 255));
-        jLabel8.setText("Balance");
+        BalLbl.setFont(new java.awt.Font("Calisto MT", 1, 22)); // NOI18N
+        BalLbl.setForeground(new java.awt.Color(102, 0, 255));
+        BalLbl.setText("Balance");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -188,7 +241,7 @@ public class FastCashs extends javax.swing.JFrame {
                             .addComponent(DEPOSITBTN5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
+                        .addComponent(BalLbl)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DEPOSITBTN3)))
                 .addGap(130, 130, 130))
@@ -215,7 +268,7 @@ public class FastCashs extends javax.swing.JFrame {
                                 .addComponent(DEPOSITBTN2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
-                                .addComponent(jLabel8)))
+                                .addComponent(BalLbl)))
                         .addGap(34, 34, 34)
                         .addComponent(DEPOSITBTN4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
@@ -259,6 +312,87 @@ public class FastCashs extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DEPOSITBTN5ActionPerformed
 
+    private void DEPOSITBTN1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DEPOSITBTN1MouseClicked
+       if(OldBalance<100)
+             {
+                 JOptionPane.showMessageDialog(this, "Not Enough Balance");
+             }
+        else
+             {
+                 try {
+                 String Query = "Update AccountTbl set Balance=? where AccNum=?";
+                 Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root",""); 
+                 PreparedStatement ps = Con.prepareStatement(Query);
+                 ps.setInt(1, OldBalance-100);
+                 ps.setInt(2, MyAccNum);
+                 if(ps.executeUpdate() == 1)
+                 {
+                     JOptionPane.showMessageDialog(this, "Balance Updated");
+                 }else
+                 {
+                     JOptionPane.showMessageDialog(this, "Missing Information");
+                 }
+                 } catch (Exception e) {
+                     JOptionPane.showMessageDialog(this, e);
+                 }
+
+             }
+    }//GEN-LAST:event_DEPOSITBTN1MouseClicked
+
+    private void DEPOSITBTN4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DEPOSITBTN4MouseClicked
+        if(OldBalance<5000)
+             {
+                 JOptionPane.showMessageDialog(this, "Not Enough Balance");
+             }
+        else
+             {
+                 try {
+                 String Query = "Update AccountTbl set Balance=? where AccNum=?";
+                 Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root",""); 
+                 PreparedStatement ps = Con.prepareStatement(Query);
+                 ps.setInt(1, OldBalance-5000);
+                 ps.setInt(2, MyAccNum);
+                 if(ps.executeUpdate() == 1)
+                 {
+                     JOptionPane.showMessageDialog(this, "Balance Updated");
+                 }else
+                 {
+                     JOptionPane.showMessageDialog(this, "Missing Information");
+                 }
+                 } catch (Exception e) {
+                     JOptionPane.showMessageDialog(this, e);
+                 }
+
+             }
+    }//GEN-LAST:event_DEPOSITBTN4MouseClicked
+
+    private void DEPOSITBTN5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DEPOSITBTN5MouseClicked
+        if(OldBalance<10000)
+             {
+                 JOptionPane.showMessageDialog(this, "Not Enough Balance");
+             }
+        else
+             {
+                 try {
+                 String Query = "Update AccountTbl set Balance=? where AccNum=?";
+                 Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root",""); 
+                 PreparedStatement ps = Con.prepareStatement(Query);
+                 ps.setInt(1, OldBalance-10000);
+                 ps.setInt(2, MyAccNum);
+                 if(ps.executeUpdate() == 1)
+                 {
+                     JOptionPane.showMessageDialog(this, "Balance Updated");
+                 }else
+                 {
+                     JOptionPane.showMessageDialog(this, "Missing Information");
+                 }
+                 } catch (Exception e) {
+                     JOptionPane.showMessageDialog(this, e);
+                 }
+
+             }
+    }//GEN-LAST:event_DEPOSITBTN5MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -295,6 +429,7 @@ public class FastCashs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel BalLbl;
     private javax.swing.JButton DEPOSITBTN;
     private javax.swing.JButton DEPOSITBTN1;
     private javax.swing.JButton DEPOSITBTN2;
@@ -307,7 +442,6 @@ public class FastCashs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
