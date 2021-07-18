@@ -38,7 +38,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        DEPOSITBTN = new javax.swing.JButton();
+        WithdrawBtn = new javax.swing.JButton();
         DEPOSITBTN1 = new javax.swing.JButton();
         DEPOSITBTN2 = new javax.swing.JButton();
         DEPOSITBTN3 = new javax.swing.JButton();
@@ -99,12 +99,17 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(102, 0, 255));
         jLabel4.setText("Account Number:");
 
-        DEPOSITBTN.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        DEPOSITBTN.setForeground(new java.awt.Color(102, 0, 255));
-        DEPOSITBTN.setText("Withdraw");
-        DEPOSITBTN.addActionListener(new java.awt.event.ActionListener() {
+        WithdrawBtn.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        WithdrawBtn.setForeground(new java.awt.Color(102, 0, 255));
+        WithdrawBtn.setText("Withdraw");
+        WithdrawBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                WithdrawBtnMouseClicked(evt);
+            }
+        });
+        WithdrawBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DEPOSITBTNActionPerformed(evt);
+                WithdrawBtnActionPerformed(evt);
             }
         });
 
@@ -185,7 +190,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DEPOSITBTN5, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DEPOSITBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(WithdrawBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(95, 95, 95))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(DEPOSITBTN3)
@@ -222,7 +227,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(DEPOSITBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(WithdrawBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -261,9 +266,9 @@ public class MainMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void DEPOSITBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DEPOSITBTNActionPerformed
+    private void WithdrawBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WithdrawBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DEPOSITBTNActionPerformed
+    }//GEN-LAST:event_WithdrawBtnActionPerformed
 
     private void DEPOSITBTN3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DEPOSITBTN3ActionPerformed
         // TODO add your handling code here:
@@ -290,6 +295,11 @@ public class MainMenu extends javax.swing.JFrame {
         new ChangePIN(MyAccNum).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ChangePinBtnMouseClicked
+
+    private void WithdrawBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_WithdrawBtnMouseClicked
+        new Withdraws(MyAccNum).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_WithdrawBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -329,11 +339,11 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AccNum1b1;
     private javax.swing.JButton ChangePinBtn;
-    private javax.swing.JButton DEPOSITBTN;
     private javax.swing.JButton DEPOSITBTN1;
     private javax.swing.JButton DEPOSITBTN2;
     private javax.swing.JButton DEPOSITBTN3;
     private javax.swing.JButton DEPOSITBTN5;
+    private javax.swing.JButton WithdrawBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

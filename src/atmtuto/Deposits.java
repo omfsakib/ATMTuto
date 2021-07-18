@@ -35,8 +35,10 @@ public class Deposits extends javax.swing.JFrame {
    {
         String Query = "select * from Accounttbl where AccNum='"+MyAccNum+"'";
         try {
+            
+Class.forName("com.mysql.jdbc.Driver"); 
               Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atmdb","root","");
-              St1 = Con.createStatement();
+            St1 = Con.createStatement();
               Rs1 = St1.executeQuery(Query);
               if(Rs1.next()){
               OldBalance = Rs1.getInt(9);             
