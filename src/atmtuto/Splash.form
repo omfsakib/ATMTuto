@@ -54,7 +54,7 @@
                   <Component id="jLabel2" min="-2" pref="90" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
               </Group>
-              <Component id="MyProgressbar" alignment="0" max="32767" attributes="0"/>
+              <Component id="MyProgressBar" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -65,7 +65,7 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                  <Component id="MyProgressbar" min="-2" max="-2" attributes="0"/>
+                  <Component id="MyProgressBar" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -89,7 +89,7 @@
             <Property name="text" type="java.lang.String" value="MNS BANK"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JProgressBar" name="MyProgressbar">
+        <Component class="javax.swing.JProgressBar" name="MyProgressBar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="0" red="33" type="rgb"/>
